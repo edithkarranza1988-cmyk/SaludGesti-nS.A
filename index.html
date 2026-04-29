@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaludGestión S.A - Portal de Afiliación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1E6FB8;
+            --secondary-color: #4DA0E0;
+            --accent-color: #0A84D0;
+            --light-bg: #F4F7FA;
+            --dark-text: #0F2A44;
+            --light-text: #6B7A86;
+            --border-color: #D6E3F2;
+            --success-color: #2E8B57;
+            --error-color: #D64545;
+            --warning-color: #F0A500;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #FFFFFF;
+            transition: all 0.3s ease;
+        }
+
+        /* ============================================
+           HEADER & NAVEGACIÓN
+           ============================================ */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-name {
+            color: #FFFFFF;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.75rem;
+            margin-top: -0.3rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background-color: var(--accent-color);
+        }
+
+        /* ============================================
+           SECCIONES PRINCIPALES
+           ============================================ */
+        .section {
+            display: none;
+            min-height: calc(100vh - 200px);
+            padding: 3rem 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            background: linear-gradient(135deg, rgba(11, 123, 62, 0.95) 0%, rgba(29, 183, 102, 0.95) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0 300 Q300 200 600 300 T1200 300 L1200 600 L0 600 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 5rem 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            color: #FFFFFF;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: #FFFFFF;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: #E55A2B;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #FFFFFF;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ============================================
+           CARDS & GRID LAYOUT
+           ============================================ */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            border-color: var(--secondary-color);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           FORMULARIOS
+           ============================================ */
+        .form-container {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 2rem auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            background-color: rgba(29, 183, 102, 0.05);
+            box-shadow: 0 0 0 3px rgba(29, 183, 102, 0.1);
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-error {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .form-success {
+            background: rgba(39, 174, 96, 0.1);
+            border: 2px solid var(--success-color);
+            color: var(--success-color);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        /* ============================================
+           PANEL FAMILIAR
+           ============================================ */
+        .family-panel {
+            background: #FFFFFF;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .family-member {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .member-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .member-info p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .member-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            background: var(--secondary-color);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            background: var(--primary-color);
+        }
+
+        /* ============================================
+           BÚSQUEDA DE PRESTADORES
+           ============================================ */
+        .providers-section {
+            margin: 3rem 0;
+        }
+
+        .search-filters {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: flex-end;
+        }
+
+        .search-filters input, .search-filters select {
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        .provider-card {
+            background: #FFFFFF;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .provider-card:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(29, 183, 102, 0.2);
+        }
+
+        .provider-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .provider-details h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .provider-details p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .rating {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .distance {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .no-providers {
+            text-align: center;
+            padding: 3rem;
+            color: var(--light-text);
+        }
+
+        /* ============================================
+           DATASET TABLE
+           ============================================ */
+        .dataset-section {
+            margin: 3rem 0;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: #FFFFFF;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: var(--light-bg);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: var(--dark-text);
+            color: #FFFFFF;
+            padding: 3rem 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-filters {
+                grid-template-columns: 1fr;
+            }
+
+            .provider-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .family-member {
+                grid-template-columns: 1fr;
+            }
+
+            .member-actions {
+                justify-content: flex-start;
+            }
+
+            header .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* ============================================
+           LOADING & NOTIFICATIONS
+           ============================================ */
+        .spinner {
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .notification {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.success {
+            background: rgba(39, 174, 96, 0.1);
+            border: 2px solid var(--success-color);
+            color: var(--success-color);
+        }
+
+        .notification.error {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid var(--error-color);
+            color: var(--error-color);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* ============================================
+           ACCESSIBILITY
+           ============================================ */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        button:focus, a:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+<link type="text/css" rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo">🏥</div>
+                <div>
+                    <div class="brand-name">SaludGestión S.A</div>
+                    <div class="brand-subtitle">Gestión Integral de Salud</div>
+                </div>
+            </div>
+            <nav role="navigation" aria-label="Navegación principal">
+                <a href="#" data-section="inicio" class="nav-link active">Inicio</a>
+                <a href="#" data-section="suscripcion" class="nav-link">Suscripción</a>
+                <a href="#" data-section="panel-familiar" class="nav-link">Panel Familiar</a>
+                <a href="#" data-section="prestadores" class="nav-link">Prestadores</a>
+                <a href="#" data-section="contacto" class="nav-link">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- SECCIÓN: INICIO -->
+        <section id="inicio" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h1>Bienvenido a SaludGestión S.A</h1>
+                    <p>Gestión integral de salud con acceso oportuno, resultados clínicos superiores y sostenibilidad financiera.</p>
+                    <button class="cta-button" onclick="navigateToSection('suscripcion')">Afiliarme Ahora</button>
+                    <button class="cta-button secondary" onclick="navigateToSection('prestadores')">Buscar Prestadores</button>
+                </div>
+
+                <h2>¿Por qué elegir SaludGestión?</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">⏰</div>
+                        <h3>Acceso Oportuno</h3>
+                        <p>Agilidad en la atención médica con procesos optimizados y prestadores de calidad disponibles 24/7.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>Excelencia Clínica</h3>
+                        <p>Resultados clínicos superiores basados en evidencia y mejora continua de nuestros indicadores de calidad.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">💰</div>
+                        <h3>Sostenibilidad Financiera</h3>
+                        <p>Planes asequibles diseñados para garantizar acceso a salud de calidad sin comprometer tu economía.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🌍</div>
+                        <h3>Ecosistema Omnicanal</h3>
+                        <p>Portal web, call center 24/7 y atención humanizada para tu comodidad en cualquier momento.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3>Búsqueda Inteligente</h3>
+                        <p>Localiza prestadores cercanos con geolocalización y consulta calificaciones y especialidades.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">👨‍👩‍👧‍👦</div>
+                        <h3>Panel Familiar</h3>
+                        <p>Gestiona la salud de toda tu familia en un solo lugar con acceso seguro y personalizado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: SUSCRIPCIÓN -->
+        <section id="suscripcion" class="section">
+            <div class="container">
+                <h2>Formulario de Suscripción</h2>
+                <p style="color: var(--light-text); margin-bottom: 2rem;">Completa el formulario para afiliarte a SaludGestión S.A. Nuestro equipo se pondrá en contacto contigo en máximo 24 horas.</p>
+
+                <div class="form-container">
+                    <div class="form-success" id="successMessage">
+                        ✓ ¡Registro exitoso! Te contactaremos pronto.
+                    </div>
+
+                    <form id="subscriptionForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="fullName">Nombre Completo <span style="color: var(--error-color);">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Ej: Juan Carlos Pérez" required>
+                            <div class="form-error" id="errorFullName">El nombre debe tener al menos 3 caracteres.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico <span style="color: var(--error-color);">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="Ej: juan.perez@email.com" required>
+                            <div class="form-error" id="errorEmail">Por favor, ingresa un correo válido.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Teléfono <span style="color: var(--error-color);">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="Ej: +34 123 456 789" required>
+                            <div class="form-error" id="errorPhone">El teléfono debe tener al menos 10 dígitos.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">Edad</label>
+                            <input type="number" id="age" name="age" placeholder="Ej: 35" min="18" max="120">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plan">Plan de Salud <span style="color: var(--error-color);">*</span></label>
+                            <select id="plan" name="plan" required>
+                                <option value="">-- Selecciona un plan --</option>
+                                <option value="basico">Plan Básico - $50/mes</option>
+                                <option value="familiar">Plan Familiar - $120/mes</option>
+                                <option value="premium">Plan Premium - $200/mes</option>
+                            </select>
+                            <div class="form-error" id="errorPlan">Por favor, selecciona un plan.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>¿Tienes antecedentes de enfermedades crónicas?</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="chronicDisease" value="no"> No tengo</label>
+                                <label><input type="radio" name="chronicDisease" value="yes"> Sí tengo</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><input type="checkbox" id="terms" name="terms" required> Acepto los términos y condiciones <span style="color: var(--error-color);">*</span></label>
+                            <div class="form-error" id="errorTerms">Debes aceptar los términos y condiciones.</div>
+                        </div>
+
+                        <button type="submit" class="cta-button" style="width: 100%;">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PANEL FAMILIAR -->
+        <section id="panel-familiar" class="section">
+            <div class="container">
+                <h2>Panel Familiar</h2>
+                <p style="color: var(--light-text); margin-bottom: 2rem;">Administra y monitorea la salud de todos los miembros de tu familia en un solo lugar.</p>
+
+                <div class="family-panel">
+                    <h3 style="color: var(--primary-color); margin-top: 0;">Miembros de tu Familia</h3>
+                    
+                    <div class="family-member">
+                        <div class="member-avatar">JC</div>
+                        <div class="member-info">
+                            <h4>Juan Carlos Pérez</h4>
+                            <p>Titular • Plan Premium • ID: SG-2024-001</p>
+                            <p>Próxima cita: 15 de Mayo, 2026</p>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn-small">Ver Historial</button>
+                            <button class="btn-small">Agendar Cita</button>
+                        </div>
+                    </div>
+
+                    <div class="family-member">
+                        <div class="member-avatar">MP</div>
+                        <div class="member-info">
+                            <h4>María Pérez Gómez</h4>
+                            <p>Cónyuge • Plan Premium • ID: SG-2024-002</p>
+                            <p>Próxima cita: 22 de Mayo, 2026</p>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn-small">Ver Historial</button>
+                            <button class="btn-small">Agendar Cita</button>
+                        </div>
+                    </div>
+
+                    <div class="family-member">
+                        <div class="member-avatar">CP</div>
+                        <div class="member-info">
+                            <h4>Carlos Pérez Gómez</h4>
+                            <p>Hijo • Plan Familiar • ID: SG-2024-003</p>
+                            <p>Próxima revisión: 10 de Junio, 2026</p>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn-small">Ver Historial</button>
+                            <button class="btn-small">Agendar Cita</button>
+                        </div>
+                    </div>
+
+                    <button class="cta-button" style="margin-top: 2rem;">+ Agregar Miembro a la Familia</button>
+                </div>
+
+                <!-- DATASET DE PRESTADORES -->
+                <div class="dataset-section">
+                    <h3>Dataset: Prestadores Disponibles</h3>
+                    <p style="color: var(--light-text); margin-bottom: 1.5rem;">Base de datos de todos los prestadores médicos afiliados a SaludGestión S.A</p>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID Prestador</th>
+                                    <th>Nombre</th>
+                                    <th>Especialidad</th>
+                                    <th>Ubicación</th>
+                                    <th>Teléfono</th>
+                                    <th>Calificación</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PR-001</td>
+                                    <td>Dr. Roberto Silva</td>
+                                    <td>Medicina General</td>
+                                    <td>Calle Principal 123, Centro</td>
+                                    <td>+34 912 345 678</td>
+                                    <td><span class="rating">★★★★★ 4.8</span></td>
+                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>PR-002</td>
+                                    <td>Dra. Elena Martínez</td>
+                                    <td>Cardiología</td>
+                                    <td>Avenida 2 de Mayo 456, Zona Este</td>
+                                    <td>+34 934 567 890</td>
+                                    <td><span class="rating">★★★★★ 4.9</span></td>
+                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>PR-003</td>
+                                    <td>Dr. Fernando González</td>
+                                    <td>Pediatría</td>
+                                    <td>Paseo de la República 789, Centro</td>
+                                    <td>+34 915 678 901</td>
+                                    <td><span class="rating">★★★★☆ 4.6</span></td>
+                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>PR-004</td>
+                                    <td>Dra. Claudia López</td>
+                                    <td>Ginecología</td>
+                                    <td>Gran Vía 1000, Centro</td>
+                                    <td>+34 916 789 012</td>
+                                    <td><span class="rating">★★★★★ 4.9</span></td>
+                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>PR-005</td>
+                                    <td>Dr. Javier Núñez</td>
+                                    <td>Traumatología</td>
+                                    <td>Calle del Prado 111, Zona Oeste</td>
+                                    <td>+34 917 890 123</td>
+                                    <td><span class="rating">★★★★☆ 4.7</span></td>
+                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>PR-006</td>
+                                    <td>Hospital Central Salud</td>
+                                    <td>Medicina General + Emergencia</td>
+                                    <td>Calle Hospital 222, Centro</td>
+                                    <td>+34 918 901 234</td>
+                                    <td><span class="rating">★★★★★ 4.8</span></td>
+                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>PR-007</td>
+                                    <td>Dra. Sofía Ramírez</td>
+                                    <td>Dermatología</td>
+                                    <td>Boulevard de Sabana 333, Centro</td>
+                                    <td>+34 919 012 345</td>
+                                    <td><span class="rating">★★★★☆ 4.5</span></td>
+                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td>PR-008</td>
+                                    <td>Centro Odontológico Smile</td>
+                                    <td>Odontología</td>
+                                    <td>Avenida Dental 444, Zona Este</td>
+                                    <td>+34 920 123 456</td>
+                                    <td><span class="rating">★★★★★ 4.9</span></td>
+                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: BÚSQUEDA DE PRESTADORES -->
+        <section id="prestadores" class="section">
+            <div class="container">
+                <h2>Busca Prestadores Cercanos</h2>
+                <p style="color: var(--light-text); margin-bottom: 2rem;">Localiza médicos y centros de salud cerca de ti con la mejor calificación y disponibilidad.</p>
+
+                <div class="providers-section">
+                    <div class="search-filters">
+                        <input type="text" id="searchProvider" placeholder="Buscar por nombre o especialidad..." />
+                        <select id="filterSpecialty">
+                            <option value="">Todas las especialidades</option>
+                            <option value="medicina-general">Medicina General</option>
+                            <option value="cardiologia">Cardiología</option>
+                            <option value="pediatria">Pediatría</option>
+                            <option value="ginecologia">Ginecología</option>
+                            <option value="traumatologia">Traumatología</option>
+                            <option value="dermatologia">Dermatología</option>
+                            <option value="odontologia">Odontología</option>
+                        </select>
+                        <button class="btn-primary" onclick="getLocationAndSearch()">📍 Usar mi ubicación</button>
+                        <button class="btn-primary" onclick="searchProviders()">🔍 Buscar</button>
+                    </div>
+
+                    <div id="providersResults" style="margin-top: 2rem;">
+                        <!-- Los resultados se cargarán aquí -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CONTACTO -->
+        <section id="contacto" class="section">
+            <div class="container">
+                <h2>Contacto y Soporte</h2>
+                <p style="color: var(--light-text); margin-bottom: 2rem;">Estamos aquí para ayudarte. Contacta con nuestro equipo de atención 24/7.</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">📞</div>
+                        <h3>Teléfono</h3>
+                        <p><strong>+34 900 123 456</strong></p>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">Disponible 24/7 para emergencias médicas.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">✉️</div>
+                        <h3>Correo Electrónico</h3>
+                        <p><strong>info@saludgestion.es</strong></p>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">Respuesta en máximo 24 horas.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📍</div>
+                        <h3>Oficina Principal</h3>
+                        <p><strong>Calle del Comercio 500</strong></p>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">Centro Empresarial, Zona de Negocios</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">⏱️</div>
+                        <h3>Horario de Atención</h3>
+                        <p><strong>Lunes a Viernes: 8:00 - 18:00</strong></p>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">Sábados: 9:00 - 13:00</p>
+                    </div>
+                </div>
+
+                <div class="form-container" style="margin-top: 3rem;">
+                    <h3>Envía tu mensaje</h3>
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label for="contactName">Nombre Completo</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Correo Electrónico</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Asunto</label>
+                            <input type="text" id="contactSubject" name="contactSubject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Mensaje</label>
+                            <textarea id="contactMessage" name="contactMessage" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre SaludGestión</h4>
+                <ul>
+                    <li><a href="#">Misión y Visión</a></li>
+                    <li><a href="#">Quiénes Somos</a></li>
+                    <li><a href="#">Nuestro Equipo</a></li>
+                    <li><a href="#">Trabajá con nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Planes de Salud</a></li>
+                    <li><a href="#">Red de Prestadores</a></li>
+                    <li><a href="#">Agendar Citas</a></li>
+                    <li><a href="#">Consulta de Facturas</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Información Legal</h4>
+                <ul>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="tel:+34900123456">+34 900 123 456</a></li>
+                    <li><a href="mailto:info@saludgestion.es">info@saludgestion.es</a></li>
+                    <li><a href="#">Live Chat 24/7</a></li>
+                    <li><a href="#">Redes Sociales</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <strong>SaludGestión S.A</strong> - Todos los derechos reservados.</p>
+            <p>Gestión Integral de Salud | Financiamiento | Servicios Médicos</p>
+            <p style="font-size: 0.85rem; margin-top: 1rem; color: rgba(255, 255, 255, 0.5);">
+                <strong>Aviso normativo:</strong> SaludGestión S.A opera bajo regulaciones de medicina prepagada. 
+                Licencia No. SG-2026-001. Responsable de datos: info@saludgestion.es
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // FUNCIONES DE NAVEGACIÓN
+        // ============================================
+        function navigateToSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Event listeners para navegación
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.dataset.section;
+                navigateToSection(sectionId);
+            });
+        });
+
+        // ============================================
+        // VALIDACIÓN DE FORMULARIO DE SUSCRIPCIÓN
+        // ============================================
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validatePhone(phone) {
+            const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+            return phoneRegex.test(phone);
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Obtener elementos del formulario
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const plan = document.getElementById('plan').value;
+            const terms = document.getElementById('terms').checked;
+
+            // Limpiar mensajes de error previos
+            document.querySelectorAll('.form-error').forEach(error => {
+                error.classList.remove('show');
+            });
+
+            let isValid = true;
+
+            // Validar nombre
+            if (fullName.length < 3) {
+                document.getElementById('errorFullName').classList.add('show');
+                isValid = false;
+            }
+
+            // Validar email
+            if (!validateEmail(email)) {
+                document.getElementById('errorEmail').classList.add('show');
+                isValid = false;
+            }
+
+            // Validar teléfono
+            if (!validatePhone(phone)) {
+                document.getElementById('errorPhone').classList.add('show');
+                isValid = false;
+            }
+
+            // Validar plan
+            if (!plan) {
+                document.getElementById('errorPlan').classList.add('show');
+                isValid = false;
+            }
+
+            // Validar términos
+            if (!terms) {
+                document.getElementById('errorTerms').classList.add('show');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Mostrar mensaje de éxito
+                const successMessage = document.getElementById('successMessage');
+                successMessage.classList.add('show');
+
+                // Limpiar formulario
+                document.getElementById('subscriptionForm').reset();
+
+                // Ocultar mensaje después de 5 segundos
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+
+                // Aquí iría la lógica de envío a servidor
+                console.log('Formulario válido. Datos:', {
+                    fullName,
+                    email,
+                    phone,
+                    plan
+                });
+            }
+        }
+
+        // ============================================
+        // BÚSQUEDA DE PRESTADORES
+        // ============================================
+        const providersDatabase = [
+            {
+                id: 'PR-001',
+                name: 'Dr. Roberto Silva',
+                specialty: 'medicina-general',
+                location: 'Calle Principal 123, Centro',
+                distance: '2.3 km',
+                rating: 4.8,
+                phone: '+34 912 345 678',
+                avatar: '👨‍⚕️'
+            },
+            {
+                id: 'PR-002',
+                name: 'Dra. Elena Martínez',
+                specialty: 'cardiologia',
+                location: 'Avenida 2 de Mayo 456, Zona Este',
+                distance: '5.1 km',
+                rating: 4.9,
+                phone: '+34 934 567 890',
+                avatar: '👩‍⚕️'
+            },
+            {
+                id: 'PR-003',
+                name: 'Dr. Fernando González',
+                specialty: 'pediatria',
+                location: 'Paseo de la República 789, Centro',
+                distance: '3.4 km',
+                rating: 4.6,
+                phone: '+34 915 678 901',
+                avatar: '👨‍⚕️'
+            },
+            {
+                id: 'PR-004',
+                name: 'Dra. Claudia López',
+                specialty: 'ginecologia',
+                location: 'Gran Vía 1000, Centro',
+                distance: '1.8 km',
+                rating: 4.9,
+                phone: '+34 916 789 012',
+                avatar: '👩‍⚕️'
+            },
+            {
+                id: 'PR-005',
+                name: 'Dr. Javier Núñez',
+                specialty: 'traumatologia',
+                location: 'Calle del Prado 111, Zona Oeste',
+                distance: '6.2 km',
+                rating: 4.7,
+                phone: '+34 917 890 123',
+                avatar: '👨‍⚕️'
+            },
+            {
+                id: 'PR-006',
+                name: 'Hospital Central Salud',
+                specialty: 'medicina-general',
+                location: 'Calle Hospital 222, Centro',
+                distance: '2.9 km',
+                rating: 4.8,
+                phone: '+34 918 901 234',
+                avatar: '🏥'
+            },
+            {
+                id: 'PR-007',
+                name: 'Dra. Sofía Ramírez',
+                specialty: 'dermatologia',
+                location: 'Boulevard de Sabana 333, Centro',
+                distance: '4.5 km',
+                rating: 4.5,
+                phone: '+34 919 012 345',
+                avatar: '👩‍⚕️'
+            },
+            {
+                id: 'PR-008',
+                name: 'Centro Odontológico Smile',
+                specialty: 'odontologia',
+                location: 'Avenida Dental 444, Zona Este',
+                distance: '3.7 km',
+                rating: 4.9,
+                phone: '+34 920 123 456',
+                avatar: '🦷'
+            }
+        ];
+
+        function displayProviders(providers) {
+            const resultsContainer = document.getElementById('providersResults');
+
+            if (providers.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-providers">
+                        <p>No se encontraron prestadores que coincidan con tu búsqueda.</p>
+                        <p style="font-size: 0.9rem; margin-top: 1rem;">Intenta con otros términos o especialidades.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            resultsContainer.innerHTML = providers.map(provider => `
+                <div class="provider-card">
+                    <div class="provider-avatar">${provider.avatar}</div>
+                    <div class="provider-details" style="flex: 1;">
+                        <h4>${provider.name}</h4>
+                        <p><strong>Especialidad:</strong> ${provider.specialty.replace('-', ' ').toUpperCase()}</p>
+                        <p>${provider.location}</p>
+                        <div class="rating">★ ${provider.rating} | <span class="distance">${provider.distance}</span></div>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--light-text);">Teléfono: ${provider.phone}</p>
+                        <button class="btn-primary" onclick="alert('Cita agendada con ${provider.name}')">Agendar Cita</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function searchProviders() {
+            const searchTerm = document.getElementById('searchProvider').value.toLowerCase();
+            const specialty = document.getElementById('filterSpecialty').value;
+
+            const filtered = providersDatabase.filter(provider => {
+                const matchesSearch = provider.name.toLowerCase().includes(searchTerm) ||
+                                    provider.specialty.includes(searchTerm.toLowerCase());
+                const matchesSpecialty = !specialty || provider.specialty === specialty;
+                return matchesSearch && matchesSpecialty;
+            });
+
+            displayProviders(filtered);
+        }
+
+        function getLocationAndSearch() {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        console.log(`Tu ubicación: ${latitude}, ${longitude}`);
+
+                        // Simular búsqueda de prestadores cercanos
+                        const nearbyProviders = providersDatabase
+                            .sort((a, b) => {
+                                const distA = parseFloat(a.distance);
+                                const distB = parseFloat(b.distance);
+                                return distA - distB;
+                            })
+                            .slice(0, 5);
+
+                        displayProviders(nearbyProviders);
+                    },
+                    (error) => {
+                        console.error('Error al obtener ubicación:', error);
+                        alert('No pudimos acceder a tu ubicación. Por favor, asegúrate de permitir el acceso.');
+                    }
+                );
+            } else {
+                alert('Tu navegador no soporta geolocalización.');
+            }
+        }
+
+        // Event listeners para búsqueda
+        document.getElementById('searchProvider')?.addEventListener('keyup', searchProviders);
+        document.getElementById('filterSpecialty')?.addEventListener('change', searchProviders);
+
+        // ============================================
+        // FORMULARIO DE CONTACTO
+        // ============================================
+        function handleContactSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+
+            console.log('Mensaje de contacto:', { name, email, subject, message });
+
+            // Mostrar mensaje de éxito
+            alert(`Gracias ${name}, tu mensaje ha sido enviado exitosamente. Te contactaremos en breve.`);
+
+            // Limpiar formulario
+            document.getElementById('contactForm').reset();
+        }
+
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✓ SaludGestión S.A Portal cargado correctamente');
+            console.log('✓ Todas las funcionalidades activas');
+        });
+    </script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
