@@ -12,23 +12,53 @@
         }
 
         :root {
-            --primary-color: #1E6FB8;
-            --secondary-color: #4DA0E0;
-            --accent-color: #0A84D0;
-            --light-bg: #F4F7FA;
-            --dark-text: #0F2A44;
-            --light-text: #6B7A86;
-            --border-color: #D6E3F2;
-            --success-color: #2E8B57;
-            --error-color: #D64545;
-            --warning-color: #F0A500;
+            /* Principales */
+            --primary-color: #003060;
+            --secondary-color: #002850;
+
+            /* Fondos */
+            --light-bg: #F5F7FA;
+            --card-bg: #FFFFFF;
+
+            /* Textos */
+            --dark-text: #002850;
+            --light-text: #607080;
+
+            /* Bordes */
+            --border-color: #D0D7E2;
+
+            /* Accent */
+            --accent-color: #3A7CA5;
+
+            /* Estados alineados con branding */
+            --success-color: #4A8098;
+            --error-color: #6C748C;
+            --warning-color: #7A869A;
+            --info-color: #5B7FA6;
+
+            /* Extras */
+            --hover-color: #004080;
+            --shadow-color: rgba(0, 48, 96, 0.12);
+
+            /* Gradientes */
+            --primary-gradient: linear-gradient(
+                135deg,
+                #003060 0%,
+                #607080 100%
+            );
+
+            --secondary-gradient: linear-gradient(
+                135deg,
+                #002850 0%,
+                #003060 100%
+            );
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark-text);
-            background-color: #FFFFFF;
+            background-color: var(--light-bg);
             transition: all 0.3s ease;
         }
 
@@ -36,9 +66,9 @@
            HEADER & NAVEGACIÓN
            ============================================ */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--primary-gradient);
             padding: 1rem 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px var(--shadow-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -53,6 +83,7 @@
         }
 
         .logo-section {
+            img src="logo.png" alt="Logo" class="logo"
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -61,7 +92,7 @@
         .logo {
             width: 50px;
             height: 50px;
-            background: #FFFFFF;
+            background: var(--light-bg);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -69,7 +100,7 @@
             font-weight: bold;
             color: var(--primary-color);
             font-size: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px var(--shadow-color);
         }
 
         .brand-name {
@@ -151,7 +182,7 @@
 
         h2 {
             font-size: 2rem;
-            border-bottom: 3px solid var(--secondary-color);
+            border-bottom: 3px solid var(--accent-color);
             padding-bottom: 0.5rem;
             display: inline-block;
         }
@@ -164,36 +195,36 @@
            HERO SECTION
            ============================================ */
         .hero {
-            background: linear-gradient(135deg, rgba(11, 123, 62, 0.95) 0%, rgba(29, 183, 102, 0.95) 100%), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0 300 Q300 200 600 300 T1200 300 L1200 600 L0 600 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background: url("familiafeliz.jpg") no-repeat center center;            
             background-size: cover;
-            background-position: center;
             color: #FFFFFF;
             text-align: center;
             padding: 5rem 2rem;
             border-radius: 10px;
             margin-bottom: 3rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px var(--shadow-color);
+}
+
         }
 
         .hero h1 {
-            color: #FFFFFF;
+            color: #003366;
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.95);
+            color: #0066cc;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .cta-button {
-            background: var(--accent-color);
+            background: var(--accent-color); /* azul corporativo */
             color: #FFFFFF;
             padding: 1rem 2.5rem;
             border: none;
@@ -202,24 +233,24 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 4px 10px rgba(58, 124, 165, 0.3);
             display: inline-block;
             margin: 0.5rem;
         }
 
         .cta-button:hover {
-            background: #E55A2B;
+            background: var(--hover-color);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 6px 20px rgba(58, 124, 165, 0.4);
         }
 
         .cta-button.secondary {
-            background: rgba(255, 255, 255, 0.2);
+            background: #f1f1f1;
             border: 2px solid #FFFFFF;
         }
 
         .cta-button.secondary:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(245, 247, 250, 0.3);
         }
 
         /* ============================================
@@ -233,18 +264,18 @@
         }
 
         .card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
             border-radius: 10px;
             padding: 2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            border-color: var(--secondary-color);
+            box-shadow: 0 8px 20px var(--shadow-color);
+            border-color: var(--accent-color);
         }
 
         .card-icon {
@@ -271,7 +302,8 @@
             border-radius: 10px;
             max-width: 600px;
             margin: 2rem auto;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
@@ -293,13 +325,14 @@
             font-family: inherit;
             font-size: 1rem;
             transition: all 0.3s ease;
+            background-color: var(--card-bg);
         }
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--secondary-color);
-            background-color: rgba(29, 183, 102, 0.05);
-            box-shadow: 0 0 0 3px rgba(29, 183, 102, 0.1);
+            border-color: var(--accent-color);
+            background-color: var(--card-bg);
+            box-shadow: 0 0 0 3px rgba(58, 124, 165, 0.1);
         }
 
         input[type="checkbox"], input[type="radio"] {
@@ -336,7 +369,7 @@
         }
 
         .form-success {
-            background: rgba(39, 174, 96, 0.1);
+            background: rgba(74, 128, 152, 0.1);
             border: 2px solid var(--success-color);
             color: var(--success-color);
             padding: 1rem;
@@ -353,11 +386,12 @@
            PANEL FAMILIAR
            ============================================ */
         .family-panel {
-            background: #FFFFFF;
+            background: var(--card-bg);
             border: 2px solid var(--border-color);
             border-radius: 10px;
             padding: 2rem;
             margin: 2rem 0;
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
 
         .family-member {
@@ -369,13 +403,13 @@
             background: var(--light-bg);
             border-radius: 8px;
             margin-bottom: 1rem;
-            border-left: 4px solid var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
         }
 
         .member-avatar {
             width: 60px;
             height: 60px;
-            background: var(--secondary-color);
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -402,17 +436,19 @@
 
         .btn-small {
             padding: 0.5rem 1rem;
-            background: var(--secondary-color);
+            background: var(--accent-color);
             color: #FFFFFF;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 4px var(--shadow-color);
         }
 
         .btn-small:hover {
-            background: var(--primary-color);
+            background: var(--hover-color);
+            transform: translateY(-2px);
         }
 
         /* ============================================
@@ -434,10 +470,11 @@
             padding: 0.75rem;
             border: 2px solid var(--border-color);
             border-radius: 6px;
+            background-color: var(--card-bg);
         }
 
         .provider-card {
-            background: #FFFFFF;
+            background: var(--card-bg);
             border: 2px solid var(--border-color);
             border-radius: 10px;
             padding: 1.5rem;
@@ -446,17 +483,18 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
 
         .provider-card:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 4px 15px rgba(29, 183, 102, 0.2);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         .provider-avatar {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--primary-gradient);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -484,12 +522,12 @@
         }
 
         .distance {
-            color: var(--secondary-color);
+            color: var(--primary-color);
             font-weight: 600;
         }
 
         .btn-primary {
-            background: var(--secondary-color);
+            background: var(--accent-color);
             color: #FFFFFF;
             padding: 0.75rem 1.5rem;
             border: none;
@@ -498,10 +536,11 @@
             font-weight: 600;
             transition: all 0.3s ease;
             align-self: flex-start;
+            box-shadow: 0 2px 4px var(--shadow-color);
         }
 
         .btn-primary:hover {
-            background: var(--primary-color);
+            background: var(--hover-color);
             transform: translateY(-2px);
         }
 
@@ -509,6 +548,9 @@
             text-align: center;
             padding: 3rem;
             color: var(--light-text);
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
         }
 
         /* ============================================
@@ -526,14 +568,14 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            background: #FFFFFF;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            background: var(--card-bg);
+            box-shadow: 0 2px 8px var(--shadow-color);
             border-radius: 10px;
             overflow: hidden;
         }
 
         th {
-            background: var(--primary-color);
+            background: var(--primary-gradient);
             color: #FFFFFF;
             padding: 1rem;
             text-align: left;
@@ -557,7 +599,7 @@
            FOOTER
            ============================================ */
         footer {
-            background: var(--dark-text);
+            background: var(--secondary-color);
             color: #FFFFFF;
             padding: 3rem 2rem 1rem;
             margin-top: 3rem;
@@ -573,7 +615,7 @@
         }
 
         .footer-section h4 {
-            color: var(--secondary-color);
+            color: var(--light-bg);
             margin-bottom: 1rem;
             font-weight: 600;
         }
@@ -587,22 +629,22 @@
         }
 
         .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: var(--secondary-color);
+            color: var(--light-bg);
             text-decoration: underline;
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(245, 247, 250, 0.2);
             padding-top: 1.5rem;
             text-align: center;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .footer-bottom p {
@@ -666,7 +708,7 @@
            ============================================ */
         .spinner {
             border: 4px solid var(--border-color);
-            border-top: 4px solid var(--secondary-color);
+            border-top: 4px solid var(--accent-color);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -687,13 +729,13 @@
         }
 
         .notification.success {
-            background: rgba(39, 174, 96, 0.1);
+            background: rgba(74, 128, 152, 0.1);
             border: 2px solid var(--success-color);
             color: var(--success-color);
         }
 
         .notification.error {
-            background: rgba(231, 76, 60, 0.1);
+            background: rgba(108, 116, 140, 0.1);
             border: 2px solid var(--error-color);
             color: var(--error-color);
         }
@@ -728,7 +770,7 @@
         }
 
         button:focus, a:focus {
-            outline: 2px solid var(--secondary-color);
+            outline: 2px solid var(--accent-color);
             outline-offset: 2px;
         }
 
@@ -744,7 +786,6 @@
             border-width: 0;
         }
     </style>
-<link type="text/css" rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -753,7 +794,7 @@
     <header>
         <div class="container">
             <div class="logo-section">
-                <div class="logo">🏥</div>
+                <img src="logo.png" alt="Logo" class="logo">
                 <div>
                     <div class="brand-name">SaludGestión S.A</div>
                     <div class="brand-subtitle">Gestión Integral de Salud</div>
@@ -777,10 +818,15 @@
                     <h1>Bienvenido a SaludGestión S.A</h1>
                     <p>Gestión integral de salud con acceso oportuno, resultados clínicos superiores y sostenibilidad financiera.</p>
                     <button class="cta-button" onclick="navigateToSection('suscripcion')">Afiliarme Ahora</button>
-                    <button class="cta-button secondary" onclick="navigateToSection('prestadores')">Buscar Prestadores</button>
+                    <button class="cta-button" onclick="navigateToSection('prestadores')">Buscar Prestadores</button>
                 </div>
 
+
                 <h2>¿Por qué elegir SaludGestión?</h2>
+                <video controls width="100%" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); margin: 2rem 0;">
+                <source src="videopromocional.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+                </video>
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-icon">⏰</div>
@@ -958,7 +1004,7 @@
                                     <td>Calle Principal 123, Centro</td>
                                     <td>+34 912 345 678</td>
                                     <td><span class="rating">★★★★★ 4.8</span></td>
-                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                    <td><span style="background: rgba(74, 128, 152, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
                                 </tr>
                                 <tr>
                                     <td>PR-002</td>
@@ -967,7 +1013,7 @@
                                     <td>Avenida 2 de Mayo 456, Zona Este</td>
                                     <td>+34 934 567 890</td>
                                     <td><span class="rating">★★★★★ 4.9</span></td>
-                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                    <td><span style="background: rgba(74, 128, 152, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
                                 </tr>
                                 <tr>
                                     <td>PR-003</td>
@@ -976,7 +1022,7 @@
                                     <td>Paseo de la República 789, Centro</td>
                                     <td>+34 915 678 901</td>
                                     <td><span class="rating">★★★★☆ 4.6</span></td>
-                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                    <td><span style="background: rgba(74, 128, 152, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
                                 </tr>
                                 <tr>
                                     <td>PR-004</td>
@@ -985,7 +1031,7 @@
                                     <td>Gran Vía 1000, Centro</td>
                                     <td>+34 916 789 012</td>
                                     <td><span class="rating">★★★★★ 4.9</span></td>
-                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                    <td><span style="background: rgba(74, 128, 152, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
                                 </tr>
                                 <tr>
                                     <td>PR-005</td>
@@ -994,7 +1040,7 @@
                                     <td>Calle del Prado 111, Zona Oeste</td>
                                     <td>+34 917 890 123</td>
                                     <td><span class="rating">★★★★☆ 4.7</span></td>
-                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                    <td><span style="background: rgba(74, 128, 152, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
                                 </tr>
                                 <tr>
                                     <td>PR-006</td>
@@ -1003,7 +1049,7 @@
                                     <td>Calle Hospital 222, Centro</td>
                                     <td>+34 918 901 234</td>
                                     <td><span class="rating">★★★★★ 4.8</span></td>
-                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                    <td><span style="background: rgba(74, 128, 152, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
                                 </tr>
                                 <tr>
                                     <td>PR-007</td>
@@ -1012,7 +1058,7 @@
                                     <td>Boulevard de Sabana 333, Centro</td>
                                     <td>+34 919 012 345</td>
                                     <td><span class="rating">★★★★☆ 4.5</span></td>
-                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                    <td><span style="background: rgba(74, 128, 152, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
                                 </tr>
                                 <tr>
                                     <td>PR-008</td>
@@ -1021,7 +1067,7 @@
                                     <td>Avenida Dental 444, Zona Este</td>
                                     <td>+34 920 123 456</td>
                                     <td><span class="rating">★★★★★ 4.9</span></td>
-                                    <td><span style="background: rgba(39, 174, 96, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
+                                    <td><span style="background: rgba(74, 128, 152, 0.2); color: var(--success-color); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.9rem;">Activo</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1162,7 +1208,7 @@
         <div class="footer-bottom">
             <p>&copy; 2026 <strong>SaludGestión S.A</strong> - Todos los derechos reservados.</p>
             <p>Gestión Integral de Salud | Financiamiento | Servicios Médicos</p>
-            <p style="font-size: 0.85rem; margin-top: 1rem; color: rgba(255, 255, 255, 0.5);">
+            <p style="font-size: 0.85rem; margin-top: 1rem; color: rgba(255, 255, 255, 0.8);">
                 <strong>Aviso normativo:</strong> SaludGestión S.A opera bajo regulaciones de medicina prepagada. 
                 Licencia No. SG-2026-001. Responsable de datos: info@saludgestion.es
             </p>
@@ -1472,6 +1518,5 @@
             console.log('✓ Todas las funcionalidades activas');
         });
     </script>
-<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
